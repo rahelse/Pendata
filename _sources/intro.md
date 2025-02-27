@@ -1,11 +1,15 @@
-# Welcome to your Jupyter Book
+## Penambangan Data 
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+Penambangan data adalah teknik analisis data yang dilakukan dengan bantuan komputer. Teknik ini bertujuan untuk menemukan pola atau hubungan tersembunyi dalam data. Manfaat penambangan data Menemukan anomali, Memprediksi tren dan peluang di masa mendatang, Meningkatkan pendapatan, Memangkas biaya, Mencari dan mendeteksi fraud.
 
-Check out the content pages bundled with this sample book to see more.
+
+Nama : Rahel Syalom Elisabeth Manalu
+
+Nim : 230411100032
+
+Email : rahelse45@gmail.com
+
+Prodi : Teknik Informatika 
 
 ```{tableofcontents}
 ```
