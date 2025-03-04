@@ -60,6 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'tugas1';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="TUGAS 2" href="tugas2.html" />
     <link rel="prev" title="Penambangan Data" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -180,6 +181,13 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>TUGAS 1</strong></a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="tugas2.html"><strong>TUGAS 2</strong></a></li>
+
+
+
+
+
 
 </ul>
 
@@ -376,7 +384,24 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>TUGAS 1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>TUGAS 1</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">Data Understanding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengumpulan-data">Pengumpulan data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-package-untuk-mysql-dan-posgresql">Install Package untuk MySQL dan PosgreSQL</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-data">Sampling data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#profiling-data">Profiling data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menarik-data-base-dari-posgresql-dan-mysql-menjadi-1-tabel-sekaligus-mengecek-apakah-terdapat-mising-value-dan-ketidak-konsistenan-ketika-data-digabungkan">menarik data base dari PosgreSql dan Mysql menjadi 1 tabel sekaligus mengecek apakah terdapat mising value dan ketidak konsistenan ketika data digabungkan</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">Visualisasi Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#korelasi-dan-asosiasi">Korelasi dan Asosiasi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data">Eksplorasi Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indentifikasi-masalah-data">Indentifikasi Masalah Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validasi-data">Validasi data</a></li>
+</ul>
+</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#alur-eksekusi-program">Alur Eksekusi Program:</a></li>
 </ul>
 
@@ -390,36 +415,55 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="tugas-1">
+  <section class="tex2jax_ignore mathjax_ignore" id="tugas-1">
 <h1><strong>TUGAS 1</strong><a class="headerlink" href="#tugas-1" title="Link to this heading">#</a></h1>
-<p>Kode ini mengambil data dari dua database berbeda, yaitu PostgreSQL dan MySQL, lalu menggabungkannya berdasarkan kolom “id” dan “class”. Setelah itu, data hasil gabungan dianalisis dan divisualisasikan menggunakan scatter plot dan boxplot.</p>
+<section id="data-understanding">
+<h2>Data Understanding<a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h2>
+<p>Merupakan salah satu tahapan penting dalam Knowledge Discovery in database (KDD) atau data maining yang merupakan langkah awal untuk memahami data secara mendalam sebelum melakukan analisis lebih lanjut karena nantinya akan memengaruhi keberhasilan seluruh proses data maining</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="alur-eksekusi-program">
-<h1>Alur Eksekusi Program:<a class="headerlink" href="#alur-eksekusi-program" title="Link to this heading">#</a></h1>
-<p><strong>1. Mengambil Data dari PostgreSQL</strong></p>
+<section id="pengumpulan-data">
+<h2>Pengumpulan data<a class="headerlink" href="#pengumpulan-data" title="Link to this heading">#</a></h2>
+<p>Dalam tahap ini kami sudah mengumpulkan data dan meletakkan di <a class="reference external" href="http://aiven.io">aiven.io</a> yang merupakan sumber data dari data base yang berbeda dalam tahapan pengumpulan data harus dipastikan bahwa semua data harus relevan sesuai dengan tujuan analisis.</p>
+<section id="install-package-untuk-mysql-dan-posgresql">
+<h3>Install Package untuk MySQL dan PosgreSQL<a class="headerlink" href="#install-package-untuk-mysql-dan-posgresql" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="sampling-data">
+<h2>Sampling data<a class="headerlink" href="#sampling-data" title="Link to this heading">#</a></h2>
+<p>Sampling data digunakan untuk memahami subset data tanpa harus memproses seluruh dataset disi.pada tahap ini samplng digunakan dengan mengelompokkan data berdasarkan kelasnya dengan warna yang berbeda yaitu Iris-sentosa berwarna biru Iris-versicolor berwarna merah dan Iris-virginica berwarna hijau hal ini salahsatunya bertujuan untuk memudahkan visuakisasi</p>
+</section>
+<section id="profiling-data">
+<h2>Profiling data<a class="headerlink" href="#profiling-data" title="Link to this heading">#</a></h2>
+<p>merupakan proses membuat ringkasan tentang setiap variable dalam dataset,termasuk tipe data dan meproses memeriksa, memahami, dan menganalisis struktur serta kualitas data sebelum digunakan dalam analisis lebih lanjut.</p>
+<section id="menarik-data-base-dari-posgresql-dan-mysql-menjadi-1-tabel-sekaligus-mengecek-apakah-terdapat-mising-value-dan-ketidak-konsistenan-ketika-data-digabungkan">
+<h3>menarik data base dari PosgreSql dan Mysql menjadi 1 tabel sekaligus mengecek apakah terdapat mising value dan ketidak konsistenan ketika data digabungkan<a class="headerlink" href="#menarik-data-base-dari-posgresql-dan-mysql-menjadi-1-tabel-sekaligus-mengecek-apakah-terdapat-mising-value-dan-ketidak-konsistenan-ketika-data-digabungkan" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="visualisasi-data">
+<h2>Visualisasi Data<a class="headerlink" href="#visualisasi-data" title="Link to this heading">#</a></h2>
+<p>Visualisasi data dalam analisis dataset digunakan ketika kita ingin memahami, mengeksplorasi, dan menyajikan pola dalam data. visualisasi membantu dalam mendeteksi pola, tren, hubungan antar fitur, serta distribusi data menampilkan visualisasi data dengan diagram membantu dalam mempercepat analisis data.</p>
+</section>
+<section id="korelasi-dan-asosiasi">
+<h2>Korelasi dan Asosiasi<a class="headerlink" href="#korelasi-dan-asosiasi" title="Link to this heading">#</a></h2>
+<p>merupakan proses menghitung koefisien korelasi untuk melihat hubungan linier antar variable yang bertujuan untuk menganalisis hubungan antar variabel dalam dataset.</p>
+</section>
+<section id="eksplorasi-data">
+<h2>Eksplorasi Data<a class="headerlink" href="#eksplorasi-data" title="Link to this heading">#</a></h2>
+<p>Eksplorasi data adalah proses awal dalam analisis data untuk memahami karakteristik, distribusi, dan pola dalam dataset sehingga menghasilkan deskripsi statistik seperti mean, median, modus,standar deviasi,minimun, dan maskimum dengan menggunakan visualisasi data seperti grafik histogram scatter plot untuk melihat pola atau trend awal</p>
+</section>
+<section id="indentifikasi-masalah-data">
+<h2>Indentifikasi Masalah Data<a class="headerlink" href="#indentifikasi-masalah-data" title="Link to this heading">#</a></h2>
+<p>merupakan proses memahami kualitas data dan memastikan bahwa data yang akan kita analisis atau gunakan dalam model machine learning sudah bersih, lengkap, dan sesuai format yang diharapkan. Hal yang perlu diperhatikan adalah:</p>
 <ul class="simple">
-<li><p>Kode ini terkoneksi ke database PostgreSQL dan mengambil semua data dari tabel “bunga”.</p></li>
-<li><p>Data tersebut kemudian dikonversi menjadi DataFrame Pandas agar lebih mudah diolah.</p></li>
+<li><p>Missing Values: Menemukan data yang hilang atau tidak lengkap.</p></li>
+<li><p>Outliers: Mendeteksi nilai-nilai ekstrem yang mungkin merupakan kesalahan atau anomali.</p></li>
+<li><p>Duplikasi Data: Mengidentifikasi baris atau entri yang duplikat.</p></li>
+<li><p>Inkonsistensi: Memeriksa apakah ada ketidaksesuaian dalam format atau nilai data.</p></li>
 </ul>
-<p><strong>2. Mengambil Data dari MySQL</strong></p>
-<ul class="simple">
-<li><p>Prosesnya mirip dengan PostgreSQL, tetapi menggunakan koneksi MySQL.</p></li>
-<li><p>Data dari tabel “flowermysql” disimpan dalam DataFrame Pandas.</p></li>
-</ul>
-<p><strong>3. Menggabungkan Data</strong></p>
-<ul class="simple">
-<li><p>Data dari kedua database digabungkan berdasarkan “id” dan “class” menggunakan metode inner join.</p></li>
-<li><p>Hanya data yang cocok dalam kedua tabel yang akan disertakan dalam hasil akhir.</p></li>
-</ul>
-<p><strong>4. Menampilkan Data Gabungan</strong></p>
-<ul class="simple">
-<li><p>Data hasil gabungan ditampilkan secara keseluruhan tanpa indeks untuk memudahkan pembacaan.</p></li>
-</ul>
-<p><strong>5. Visualisasi Data</strong></p>
-<ul class="simple">
-<li><p>Scatter Plot (Pairplot) digunakan untuk melihat hubungan antar variabel dan distribusi kelas.</p></li>
-<li><p>Boxplot digunakan untuk melihat distribusi dan kemungkinan outlier dalam beberapa fitur, seperti panjang dan lebar kelopak serta sepal.</p></li>
-</ul>
+</section>
+<section id="validasi-data">
+<h2>Validasi data<a class="headerlink" href="#validasi-data" title="Link to this heading">#</a></h2>
+<p>Validasi data dilakukan untuk memastikan bahwa data yang digunakan bersih, lengkap, dan sesuai sebelum dianalisis atau divisualisasikan dan memastikan apakah data memcerminkan realitas atau fenomena yang ingin dipelajari</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install pymysql
@@ -532,7 +576,7 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> id           class  petal_length  petal_width  sepal_length  sepal_width
   1     Iris-setosa           1.4          0.2           5.1          3.5
-  2     Iris-setosa           1.4          0.2           4.9          3.0
+  2     Iris-setosa          14.0          2.0          40.9         30.0
   3     Iris-setosa           1.3          0.2           4.7          3.2
   4     Iris-setosa           1.5          0.2           4.6          3.1
   5     Iris-setosa           1.4          0.2           5.0          3.6
@@ -681,14 +725,43 @@ document.write(`
 148  Iris-virginica           5.2          2.0           6.5          3.0
 149  Iris-virginica           5.4          2.3           6.2          3.4
 150  Iris-virginica           5.1          1.8           5.9          3.0
-151            ????           5.8          1.0           5.1          3.2
+151            ????           5.1          3.2           5.8          1.0
 </pre></div>
 </div>
-<img alt="_images/2b8692fbc87e86985d612190ac1a570e76a3badfb4ac21d4e2e0c682c493de07.png" src="_images/2b8692fbc87e86985d612190ac1a570e76a3badfb4ac21d4e2e0c682c493de07.png" />
-<img alt="_images/dc858be2bfe69123e11420dd2a5a78a72e41423bf8675a7094e8a90e102504c0.png" src="_images/dc858be2bfe69123e11420dd2a5a78a72e41423bf8675a7094e8a90e102504c0.png" />
-<img alt="_images/9482c4dab9ec99ef7f7259c448e7b7d81cc9a3435d8f3025c768fb5141d2e878.png" src="_images/9482c4dab9ec99ef7f7259c448e7b7d81cc9a3435d8f3025c768fb5141d2e878.png" />
+<img alt="_images/6f2b751b01fe6647c06905205b1eead85be81d1b54f6889934c93d6166517fc0.png" src="_images/6f2b751b01fe6647c06905205b1eead85be81d1b54f6889934c93d6166517fc0.png" />
+<img alt="_images/48301a9bf0635c2b5ae24bc2496cb394a8fe56521168d77ba4261566dd98fbf4.png" src="_images/48301a9bf0635c2b5ae24bc2496cb394a8fe56521168d77ba4261566dd98fbf4.png" />
+<img alt="_images/288940a5c48771c4ef87436ed3d9e9d0056a9e5e3188a45b34ebb70b1a08757d.png" src="_images/288940a5c48771c4ef87436ed3d9e9d0056a9e5e3188a45b34ebb70b1a08757d.png" />
 </div>
 </div>
+<p>Kode ini mengambil data dari dua database berbeda, yaitu PostgreSQL dan MySQL, lalu menggabungkannya berdasarkan kolom “id” dan “class”. Setelah itu, data hasil gabungan dianalisis dan divisualisasikan menggunakan scatter plot dan boxplot.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="alur-eksekusi-program">
+<h1>Alur Eksekusi Program:<a class="headerlink" href="#alur-eksekusi-program" title="Link to this heading">#</a></h1>
+<p><strong>1. Mengambil Data dari PostgreSQL</strong></p>
+<ul class="simple">
+<li><p>Kode ini terkoneksi ke database PostgreSQL dan mengambil semua data dari tabel “bunga”.</p></li>
+<li><p>Data tersebut kemudian dikonversi menjadi DataFrame Pandas agar lebih mudah diolah.</p></li>
+</ul>
+<p><strong>2. Mengambil Data dari MySQL</strong></p>
+<ul class="simple">
+<li><p>Prosesnya mirip dengan PostgreSQL, tetapi menggunakan koneksi MySQL.</p></li>
+<li><p>Data dari tabel “flowermysql” disimpan dalam DataFrame Pandas.</p></li>
+</ul>
+<p><strong>3. Menggabungkan Data</strong></p>
+<ul class="simple">
+<li><p>Data dari kedua database digabungkan berdasarkan “id” dan “class” menggunakan metode inner join.</p></li>
+<li><p>Hanya data yang cocok dalam kedua tabel yang akan disertakan dalam hasil akhir.</p></li>
+</ul>
+<p><strong>4. Menampilkan Data Gabungan</strong></p>
+<ul class="simple">
+<li><p>Data hasil gabungan ditampilkan secara keseluruhan tanpa indeks untuk memudahkan pembacaan.</p></li>
+</ul>
+<p><strong>5. Visualisasi Data</strong></p>
+<ul class="simple">
+<li><p>Scatter Plot (Pairplot) digunakan untuk melihat hubungan antar variabel dan distribusi kelas.</p></li>
+<li><p>Boxplot digunakan untuk melihat distribusi dan kemungkinan outlier dalam beberapa fitur, seperti panjang dan lebar kelopak serta sepal.</p></li>
+</ul>
 </section>
 
     <script type="text/x-thebe-config">
@@ -730,6 +803,15 @@ document.write(`
         <p class="prev-next-title">Penambangan Data</p>
       </div>
     </a>
+    <a class="right-next"
+       href="tugas2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>TUGAS 2</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -746,7 +828,24 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>TUGAS 1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>TUGAS 1</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">Data Understanding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengumpulan-data">Pengumpulan data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-package-untuk-mysql-dan-posgresql">Install Package untuk MySQL dan PosgreSQL</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-data">Sampling data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#profiling-data">Profiling data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menarik-data-base-dari-posgresql-dan-mysql-menjadi-1-tabel-sekaligus-mengecek-apakah-terdapat-mising-value-dan-ketidak-konsistenan-ketika-data-digabungkan">menarik data base dari PosgreSql dan Mysql menjadi 1 tabel sekaligus mengecek apakah terdapat mising value dan ketidak konsistenan ketika data digabungkan</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">Visualisasi Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#korelasi-dan-asosiasi">Korelasi dan Asosiasi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data">Eksplorasi Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indentifikasi-masalah-data">Indentifikasi Masalah Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validasi-data">Validasi data</a></li>
+</ul>
+</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#alur-eksekusi-program">Alur Eksekusi Program:</a></li>
 </ul>
 
