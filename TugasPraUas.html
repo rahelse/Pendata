@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Prediksi Gender Berdasarkan Nama &#8212; Penambangan Data</title>
+    <title>Prediksi Gender Berdasarkan Nama Bayi &#8212; Penambangan Data</title>
   
   
   
@@ -57,6 +57,8 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'TugasPraUas';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -194,16 +196,7 @@
 
 <li class="toctree-l1"><a class="reference internal" href="DecisionTree.html">Decision Tree</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Binnings.html">Teknik Binning</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Prediksi Gender Berdasarkan Nama</a></li>
-
-
-
-
-
-
-
-
-
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Prediksi Gender Berdasarkan Nama Bayi</a></li>
 </ul>
 
     </div>
@@ -389,7 +382,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Prediksi Gender Berdasarkan Nama</h1>
+    <h1>Prediksi Gender Berdasarkan Nama Bayi</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -399,18 +392,28 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Prediksi Gender Berdasarkan Nama</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data">Eksplorasi Data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#missin-values">missin values</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-outlier-atau-tidak">Data Outlier atau tidak</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi">Visualisasi</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sebelum-preprocessing">sebelum Preprocessing</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-klasifikasi-dengan-naive-bayes">Modeling: Klasifikasi dengan Naive Bayes</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#percobaan-dengan-data-baru">percobaan dengan data baru</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-model-tersebut">Evaluasi model tersebut</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">Data Understanding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sumber-dataset">Sumber dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-fitur-dan-variabel">Penjelasan Fitur dan Variabel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data">Eksplorasi data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">Visualisasi data</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-data">Preprocessing Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding">Encoding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pemilihan-fitur">Pemilihan Fitur</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#splitting-data">Splitting Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data-setelah-normalisasi">Visualisasi Data setelah Normalisasi</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling">Modelling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling-klasifikasi-gender-berdasarkan-nama-bayi-menggunakan-decision-tree">Modelling Klasifikasi Gender Berdasarkan Nama Bayi menggunakan Decision Tree</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling-klasifikasi-gender-berdasarkan-nama-menggunakan-naive-baye">Modelling Klasifikasi Gender Berdasarkan Nama Menggunakan Naive Baye</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling-klasifikasi-gender-berdasarkan-nama-menggunakan-knn">Modelling Klasifikasi Gender Berdasarkan Nama Menggunakan KNN</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-data">Evaluasi Data</a></li>
+</ul>
             </nav>
         </div>
     </div>
@@ -421,41 +424,63 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="prediksi-gender-berdasarkan-nama">
-<h1>Prediksi Gender Berdasarkan Nama<a class="headerlink" href="#prediksi-gender-berdasarkan-nama" title="Link to this heading">#</a></h1>
-<p>Data Understanding</p>
-<p>Sumber Data
-Dataset diambil dari link berikut:</p>
-<p>🔗 <a class="reference external" href="https://archive.ics.uci.edu/dataset/591/gender+by+name">https://archive.ics.uci.edu/dataset/591/gender+by+name</a></p>
-<p>Dataset ini berasal dari UCI Machine Learning Repository dan berisi informasi mengenai nama depan serta distribusi gendernya berdasarkan data penduduk dari Amerika Serikat, Kanada, Inggris, dan Australia. Data ini telah dikumpulkan dan dirilis untuk keperluan riset klasifikasi nama.</p>
-<p>Tujuan</p>
-<p>Tujuan dari analisis ini adalah untuk mengembangkan model prediktif yang dapat menentukan gender (laki-laki atau perempuan) berdasarkan nama depan seseorang. Model ini nantinya dapat digunakan dalam berbagai aplikasi praktis, seperti:</p>
-<p>Preprocessing data pengguna</p>
-<p>Penyesuaian konten atau layanan</p>
-<p>Pelengkap atribut dalam data demografis</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="prediksi-gender-berdasarkan-nama-bayi">
+<h1>Prediksi Gender Berdasarkan Nama Bayi<a class="headerlink" href="#prediksi-gender-berdasarkan-nama-bayi" title="Link to this heading">#</a></h1>
+<section id="data-understanding">
+<h2>Data Understanding<a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h2>
+<section id="sumber-dataset">
+<h3>Sumber dataset<a class="headerlink" href="#sumber-dataset" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://archive.ics.uci.edu/dataset/591/gender+by+name">https://archive.ics.uci.edu/dataset/591/gender+by+name</a></p>
+<p>Citations:</p>
+<ul class="simple">
+<li><p>Gender by Name [Dataset]. (2020). UCI Machine Learning Repository. <a class="reference external" href="https://doi.org/10.24432/C55G7X">https://doi.org/10.24432/C55G7X</a>.</p></li>
+</ul>
+</section>
+<section id="penjelasan-fitur-dan-variabel">
+<h3>Penjelasan Fitur dan Variabel<a class="headerlink" href="#penjelasan-fitur-dan-variabel" title="Link to this heading">#</a></h3>
+<p>Dataset ini mengaitkan nama depan dengan jenis kelamin, memberikan jumlah dan probabilitas. Dataset ini menggabungkan data pemerintah sumber terbuka dari Amerika Serikat, Inggris, Kanada, dan Australia.</p>
+<p>Dataset ini menggabungkan hitungan mentah untuk nama depan/beri nama bayi laki-laki dan perempuan pada periode waktu tersebut, dan kemudian menghitung probabilitas untuk sebuah nama berdasarkan hitungan agregat.  Sumber dataset berasal dari otoritas pemerintah:</p>
+<ul class="simple">
+<li><p>AS: Nama Bayi dari Aplikasi Kartu Jaminan Sosial - Data Nasional, 1880 hingga 2019</p></li>
+<li><p>INGGRIS:  Nama-nama bayi di buletin statistik Inggris dan Wales, 2011 hingga 2018</p></li>
+<li><p>Kanada: British Columbia 100 Tahun Nama Bayi Populer, 1918 hingga 2018</p></li>
+<li><p>Australia:  Nama-nama Bayi Populer, Departemen Kejaksaan Agung, 1944 hingga 2019</p></li>
+</ul>
+<p>Tujuan dari dataset ini adalah untuk mempelajari pola nama yang umum digunakan oleh bayi laki-laki dan perempuan, serta membangun model klasifikasi yang mampu memprediksi gender berdasarkan struktur nama.</p>
+<p>Dataset ini cocok untuk eksplorasi linguistik dan pemodelan machine learning berbasis fitur teks sederhana.</p>
+<p>Fitur yang digunakan</p>
+<ul class="simple">
+<li><p>Nama</p></li>
+<li><p>Jenis Kelamin</p></li>
+<li><p>Jumlah</p></li>
+<li><p>Probabilitas</p></li>
+</ul>
+</section>
+<section id="eksplorasi-data">
+<h3>Eksplorasi data<a class="headerlink" href="#eksplorasi-data" title="Link to this heading">#</a></h3>
+<p>Dataset ini tidak ada missing value</p>
+</section>
+<section id="visualisasi-data">
+<h3>Visualisasi data<a class="headerlink" href="#visualisasi-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">ucimlrepo</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install ucimlrepo
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting ucimlrepo
-  Downloading ucimlrepo-0.0.7-py3-none-any.whl.metadata (5.5 kB)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: ucimlrepo in /usr/local/python/3.12.1/lib/python3.12/site-packages (0.0.7)
 Requirement already satisfied: pandas&gt;=1.0.0 in /home/codespace/.local/lib/python3.12/site-packages (from ucimlrepo) (2.2.3)
 Requirement already satisfied: certifi&gt;=2020.12.5 in /home/codespace/.local/lib/python3.12/site-packages (from ucimlrepo) (2024.8.30)
-Requirement already satisfied: numpy&gt;=1.26.0 in /home/codespace/.local/lib/python3.12/site-packages (from pandas&gt;=1.0.0-&gt;ucimlrepo) (2.2.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: numpy&gt;=1.26.0 in /home/codespace/.local/lib/python3.12/site-packages (from pandas&gt;=1.0.0-&gt;ucimlrepo) (2.2.0)
 Requirement already satisfied: python-dateutil&gt;=2.8.2 in /home/codespace/.local/lib/python3.12/site-packages (from pandas&gt;=1.0.0-&gt;ucimlrepo) (2.9.0.post0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pytz&gt;=2020.1 in /home/codespace/.local/lib/python3.12/site-packages (from pandas&gt;=1.0.0-&gt;ucimlrepo) (2024.2)
+Requirement already satisfied: pytz&gt;=2020.1 in /home/codespace/.local/lib/python3.12/site-packages (from pandas&gt;=1.0.0-&gt;ucimlrepo) (2024.2)
 Requirement already satisfied: tzdata&gt;=2022.7 in /home/codespace/.local/lib/python3.12/site-packages (from pandas&gt;=1.0.0-&gt;ucimlrepo) (2024.2)
-Requirement already satisfied: six&gt;=1.5 in /home/codespace/.local/lib/python3.12/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas&gt;=1.0.0-&gt;ucimlrepo) (1.17.0)
-Downloading ucimlrepo-0.0.7-py3-none-any.whl (8.0 kB)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: ucimlrepo
-Successfully installed ucimlrepo-0.0.7
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: six&gt;=1.5 in /home/codespace/.local/lib/python3.12/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas&gt;=1.0.0-&gt;ucimlrepo) (1.17.0)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> A new release of pip is available: <span class=" -Color -Color-Red">24.3.1</span> -&gt; <span class=" -Color -Color-Green">25.1.1</span>
@@ -478,499 +503,661 @@ Successfully installed ucimlrepo-0.0.7
 <span class="n">X</span> <span class="o">=</span> <span class="n">gender_by_name</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">features</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">gender_by_name</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">targets</span>
 
-<span class="c1">## data (as pandas dataframes)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">gender_by_name</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">original</span>
-  <span class="c1"># menyimpan hasil komputasi ke dalam csv</span>
-<span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;gender_by_name.data.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">())</span> <span class="c1">#untuk menampilkan info fitur-fitur yang ada di tabel</span>
+<span class="c1"># metadata</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gender_by_name</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span> <span class="c1">#untuk menampilkan 5 baris pertama</span>
+<span class="c1"># variable information</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gender_by_name</span><span class="o">.</span><span class="n">variables</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 147269 entries, 0 to 147268
-Data columns (total 4 columns):
- #   Column       Non-Null Count   Dtype  
----  ------       --------------   -----  
- 0   Name         147269 non-null  object 
- 1   Gender       147269 non-null  object 
- 2   Count        147269 non-null  int64  
- 3   Probability  147269 non-null  float64
-dtypes: float64(1), int64(1), object(2)
-memory usage: 4.5+ MB
-None
-      Name Gender    Count  Probability
-0    James      M  5304407     0.014517
-1     John      M  5260831     0.014398
-2   Robert      M  4970386     0.013603
-3  Michael      M  4579950     0.012534
-4  William      M  4226608     0.011567
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1">#display dataset</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;uci_id&#39;: 591, &#39;name&#39;: &#39;Gender by Name&#39;, &#39;repository_url&#39;: &#39;https://archive.ics.uci.edu/dataset/591/gender+by+name&#39;, &#39;data_url&#39;: &#39;https://archive.ics.uci.edu/static/public/591/data.csv&#39;, &#39;abstract&#39;: &#39;This dataset attributes first names to genders, giving counts and probabilities.  It combines open-source government data from the US, UK, Canada, and Australia.\n&#39;, &#39;area&#39;: &#39;Social Science&#39;, &#39;tasks&#39;: [&#39;Classification&#39;, &#39;Clustering&#39;], &#39;characteristics&#39;: [&#39;Text&#39;], &#39;num_instances&#39;: 147270, &#39;num_features&#39;: 4, &#39;feature_types&#39;: [], &#39;demographics&#39;: [&#39;Gender&#39;], &#39;target_col&#39;: None, &#39;index_col&#39;: None, &#39;has_missing_values&#39;: &#39;no&#39;, &#39;missing_values_symbol&#39;: None, &#39;year_of_dataset_creation&#39;: 2020, &#39;last_updated&#39;: &#39;Thu Mar 28 2024&#39;, &#39;dataset_doi&#39;: &#39;10.24432/C55G7X&#39;, &#39;creators&#39;: [], &#39;intro_paper&#39;: None, &#39;additional_info&#39;: {&#39;summary&#39;: &quot;This dataset combines raw counts for first/given names of male and female babies in those time periods, and then calculates a probability for a name given the aggregate count.  Source datasets are from government authorities:\r\n-US: Baby Names from Social Security Card Applications - National Data, 1880 to 2019\r\n-UK:  Baby names in England and Wales Statistical bulletins, 2011 to 2018\r\n-Canada: British Columbia 100 Years of Popular Baby names, 1918 to 2018\r\n-Australia:  Popular Baby Names, Attorney-General&#39;s Department, 1944 to 2019&quot;, &#39;purpose&#39;: None, &#39;funded_by&#39;: None, &#39;instances_represent&#39;: None, &#39;recommended_data_splits&#39;: None, &#39;sensitive_data&#39;: None, &#39;preprocessing_description&#39;: None, &#39;variable_info&#39;: &#39;Name:  String\t\r\nGender:  M/F (category/string)\r\nCount: Integer\r\nProbability: Float&#39;, &#39;citation&#39;: None}}
+          name     role         type demographic description units  \
+0         Name  Feature  Categorical        None        None  None   
+1       Gender  Feature  Categorical      Gender        None  None   
+2        Count  Feature      Integer        None        None  None   
+3  Probability  Feature   Continuous        None        None  None   
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Name</th>
-      <th>Gender</th>
-      <th>Count</th>
-      <th>Probability</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>James</td>
-      <td>M</td>
-      <td>5304407</td>
-      <td>1.451679e-02</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>John</td>
-      <td>M</td>
-      <td>5260831</td>
-      <td>1.439753e-02</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Robert</td>
-      <td>M</td>
-      <td>4970386</td>
-      <td>1.360266e-02</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Michael</td>
-      <td>M</td>
-      <td>4579950</td>
-      <td>1.253414e-02</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>William</td>
-      <td>M</td>
-      <td>4226608</td>
-      <td>1.156713e-02</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>147264</th>
-      <td>Zylenn</td>
-      <td>M</td>
-      <td>1</td>
-      <td>2.736740e-09</td>
-    </tr>
-    <tr>
-      <th>147265</th>
-      <td>Zymeon</td>
-      <td>M</td>
-      <td>1</td>
-      <td>2.736740e-09</td>
-    </tr>
-    <tr>
-      <th>147266</th>
-      <td>Zyndel</td>
-      <td>M</td>
-      <td>1</td>
-      <td>2.736740e-09</td>
-    </tr>
-    <tr>
-      <th>147267</th>
-      <td>Zyshan</td>
-      <td>M</td>
-      <td>1</td>
-      <td>2.736740e-09</td>
-    </tr>
-    <tr>
-      <th>147268</th>
-      <td>Zyton</td>
-      <td>M</td>
-      <td>1</td>
-      <td>2.736740e-09</td>
-    </tr>
-  </tbody>
-</table>
-<p>147269 rows × 4 columns</p>
-</div></div></div>
-</div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="eksplorasi-data">
-<h1>Eksplorasi Data<a class="headerlink" href="#eksplorasi-data" title="Link to this heading">#</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">shape</span> <span class="c1">#untuk mengetahui bentuk dataset(baris &amp; kolom)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(147269, 4)
+  missing_values  
+0             no  
+1             no  
+2             no  
+3             no  
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="c1">#untuk mengetahui kolom-kolom yang ada pada dataset</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Name&#39;, &#39;Gender&#39;, &#39;Count&#39;, &#39;Probability&#39;], dtype=&#39;object&#39;)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">dtypes</span> <span class="c1">#untuk mengetahui tipe data dari masing-masing kolom</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Name            object
-Gender          object
-Count            int64
-Probability    float64
-dtype: object
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="missin-values">
-<h1>missin values<a class="headerlink" href="#missin-values" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="c1"># Asumsikan data sudah dimuat ke dalam variabel `data`</span>
-<span class="c1"># (Jika belum, bisa pakai ucimlrepo seperti sebelumnya)</span>
+<span class="c1"># Gabungkan fitur dan target</span>
+<span class="n">df_genderbyname</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="c1"># 1. Deteksi baris yang memiliki missing value</span>
-<span class="n">rows_with_missing</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
-
-<span class="c1"># 2. Tampilkan baris yang memiliki nilai kosong</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rows with Missing Values:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">rows_with_missing</span><span class="p">)</span>
-
-<span class="c1"># 3. Deteksi missing value per sel</span>
-<span class="n">missing_values</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span>
-
-<span class="c1"># 4. Hitung jumlah missing value di setiap kolom</span>
-<span class="n">missing_counts</span> <span class="o">=</span> <span class="n">missing_values</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-
-<span class="c1"># 5. Tampilkan total missing value per kolom</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Missing Value Counts:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">missing_counts</span><span class="p">)</span>
-
-<span class="c1"># 6. Tampilkan total keseluruhan missing value (opsional)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Total Missing Values in Dataset: </span><span class="si">{</span><span class="n">missing_counts</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># Tampilkan seluruh baris (jika datasetnya kecil)</span>
+<span class="c1"># Jika besar, batasi baris atau ubah opsi tampilan</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total baris dataset ini adalah =&quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">df_genderbyname</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Visualisasi dataset genderbyname&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_genderbyname</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rows with Missing Values:
-Empty DataFrame
-Columns: [Name, Gender, Count, Probability]
-Index: []
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total baris dataset ini adalah = 147269
+Visualisasi dataset genderbyname
+           Name Gender    Count   Probability
+0         James      M  5304407  1.451679e-02
+1          John      M  5260831  1.439753e-02
+2        Robert      M  4970386  1.360266e-02
+3       Michael      M  4579950  1.253414e-02
+4       William      M  4226608  1.156713e-02
+...         ...    ...      ...           ...
+147264   Zylenn      M        1  2.736740e-09
+147265   Zymeon      M        1  2.736740e-09
+147266   Zyndel      M        1  2.736740e-09
+147267   Zyshan      M        1  2.736740e-09
+147268    Zyton      M        1  2.736740e-09
 
-Missing Value Counts:
-Name           0
-Gender         0
-Count          0
-Probability    0
-dtype: int64
-
-Total Missing Values in Dataset: 0
+[147269 rows x 4 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simpan ke file CSV</span>
+<span class="n">df_genderbyname</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;datasetgenderbyname.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="data-outlier-atau-tidak">
-<h1>Data Outlier atau tidak<a class="headerlink" href="#data-outlier-atau-tidak" title="Link to this heading">#</a></h1>
+</section>
+<section id="preprocessing-data">
+<h2>Preprocessing Data<a class="headerlink" href="#preprocessing-data" title="Link to this heading">#</a></h2>
+<section id="encoding">
+<h3>Encoding<a class="headerlink" href="#encoding" title="Link to this heading">#</a></h3>
+<p>Karena model decision tree hanya menerima input numerik, maka fitur berupa huruf perlu diubah menjadi angka menggunakan Label Encoding</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span><span class="p">,</span> <span class="n">plot_tree</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">accuracy_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="c1"># Boxplot untuk kolom &#39;count&#39;</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Count&#39;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Boxplot Jumlah Kemunculan Nama (count)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># === 1. Load Data ===</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/content/datasetgenderbyname.csv&quot;</span><span class="p">)</span>  <span class="c1"># Ganti dengan path file Anda jika diperlukan</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
-<span class="c1"># Boxplot untuk kolom &#39;probability&#39;</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Probability&#39;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Boxplot Probabilitas Gender&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># === 2. Fitur Ekstraksi dari Nama ===</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;first_letter&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>       <span class="c1"># huruf pertama</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;last_letter&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>       <span class="c1"># huruf terakhir</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;last2_letters&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>    <span class="c1"># 2 huruf terakhir</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;name_length&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>                           <span class="c1"># panjang nama</span>
+
+<span class="c1"># === 3. Encoding Fitur Kategorikal ===</span>
+<span class="n">le_gender</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">le_first</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">le_last</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">le_last2</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;gender_encoded&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">le_gender</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Gender&#39;</span><span class="p">])</span>              <span class="c1"># target</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;first_encoded&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">le_first</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;first_letter&#39;</span><span class="p">])</span>          <span class="c1"># fitur</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;last_encoded&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">le_last</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;last_letter&#39;</span><span class="p">])</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;last2_encoded&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">le_last2</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;last2_letters&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ccc9cdb80882469d60918516c9c1697895eaad48b3e71f6026198d424737ad5e.png" src="_images/ccc9cdb80882469d60918516c9c1697895eaad48b3e71f6026198d424737ad5e.png" />
-<img alt="_images/3c1b38f5a5f73c0467e98b30c0d5e1f2741e95bd01bf0a85c2ed89c6789d7235.png" src="_images/3c1b38f5a5f73c0467e98b30c0d5e1f2741e95bd01bf0a85c2ed89c6789d7235.png" />
-</div>
-</div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="visualisasi">
-<h1>Visualisasi<a class="headerlink" href="#visualisasi" title="Link to this heading">#</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualisasi distribusi fitur dengan histogram</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="n">data</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Distribusi Fitur&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 1200x1000 with 0 Axes&gt;
-</pre></div>
-</div>
-<img alt="_images/9a32bd37d015320bfcdea1f46dcd21b8d9ca52a85beec84e75253fb615280daf.png" src="_images/9a32bd37d015320bfcdea1f46dcd21b8d9ca52a85beec84e75253fb615280daf.png" />
-</div>
-</div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="sebelum-preprocessing">
-<h1>sebelum Preprocessing<a class="headerlink" href="#sebelum-preprocessing" title="Link to this heading">#</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ucimlrepo</span> <span class="kn">import</span> <span class="n">fetch_ucirepo</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1"># === 1. Load Data ===</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/content/datasetgenderbyname.csv&quot;</span><span class="p">)</span>  <span class="c1"># Ganti dengan path file Anda jika diperlukan</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="c1"># === 2. Fitur Ekstraksi dari Nama ===</span>
 
-<span class="c1"># Ambil dataset Gender by Name dari UCI (ID: 591)</span>
-<span class="n">gender_data</span> <span class="o">=</span> <span class="n">fetch_ucirepo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">591</span><span class="p">)</span>
+<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/io/parsers/readers.py:1026,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1013</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1014</span>     <span class="n">dialect</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1015</span>     <span class="n">delimiter</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1022</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1023</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1024</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1026</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
 
-<span class="c1"># Ambil data sebagai DataFrame</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">gender_data</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">original</span>
+<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/io/parsers/readers.py:620,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">617</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">619</span> <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">620</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">622</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">623</span>     <span class="k">return</span> <span class="n">parser</span>
 
-<span class="c1"># Tampilkan 20 baris pertama sebelum preprocessing</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sebelum Preprocessing:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sebelum Preprocessing:
-           Name Gender    Count  Probability
-0         James      M  5304407     0.014517
-1          John      M  5260831     0.014398
-2        Robert      M  4970386     0.013603
-3       Michael      M  4579950     0.012534
-4       William      M  4226608     0.011567
-5          Mary      F  4169663     0.011411
-6         David      M  3787547     0.010366
-7        Joseph      M  2695970     0.007378
-8       Richard      M  2638187     0.007220
-9       Charles      M  2433540     0.006660
-10       Thomas      M  2381034     0.006516
-11  Christopher      M  2196198     0.006010
-12       Daniel      M  2039641     0.005582
-13      Matthew      M  1738699     0.004758
-14    Elizabeth      F  1704140     0.004664
-15     Patricia      F  1608260     0.004401
-16     Jennifer      F  1584426     0.004336
-17      Anthony      M  1506437     0.004123
-18       George      M  1495736     0.004093
-19        Linda      F  1480592     0.004052
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="preprocessing">
-<h1>Preprocessing<a class="headerlink" href="#preprocessing" title="Link to this heading">#</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/io/parsers/readers.py:1620,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1617</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1619</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">-&gt; </span><span class="mi">1620</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
 
-<span class="c1"># Asumsikan dataset sudah diambil dari UCI</span>
-<span class="kn">from</span> <span class="nn">ucimlrepo</span> <span class="kn">import</span> <span class="n">fetch_ucirepo</span>
-<span class="n">gender_data</span> <span class="o">=</span> <span class="n">fetch_ucirepo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">591</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">gender_data</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">original</span>
+<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/io/parsers/readers.py:1880,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1878</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1879</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1880</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1881</span>     <span class="n">f</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1882</span>     <span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1883</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1884</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1885</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1886</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1887</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1888</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1889</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1890</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1891</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
 
-<span class="c1"># ---------------- PREPROCESSING ---------------- #</span>
+<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/io/common.py:873,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">868</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">869</span>     <span class="c1"># Check whether the filename is to be opened in binary mode.</span>
+<span class="g g-Whitespace">    </span><span class="mi">870</span>     <span class="c1"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
+<span class="g g-Whitespace">    </span><span class="mi">871</span>     <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">872</span>         <span class="c1"># Encoding</span>
+<span class="ne">--&gt; </span><span class="mi">873</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">874</span>             <span class="n">handle</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">875</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">876</span>             <span class="n">encoding</span><span class="o">=</span><span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">877</span>             <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">878</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">879</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">880</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">881</span>         <span class="c1"># Binary mode</span>
+<span class="g g-Whitespace">    </span><span class="mi">882</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
 
-<span class="c1"># 1. Ubah ke huruf kecil dan hapus karakter non-alfabet</span>
-<span class="n">data</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[^a-z]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="c1"># 2. Encode label gender (M = 1, F = 0)</span>
-<span class="n">data</span><span class="p">[</span><span class="s1">&#39;Gender&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Gender&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s1">&#39;M&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
-
-<span class="c1"># 3. Drop baris yang memiliki missing value (jika ada)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-
-<span class="c1"># 4. TF-IDF Vectorizer (fitur berbasis karakter n-gram)</span>
-<span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">analyzer</span><span class="o">=</span><span class="s1">&#39;char&#39;</span><span class="p">,</span> <span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">])</span>  <span class="c1"># fitur</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Gender&#39;</span><span class="p">]</span>                         <span class="c1"># label</span>
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;/content/datasetgenderbyname.csv&#39;
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="modeling-klasifikasi-dengan-naive-bayes">
-<h1>Modeling: Klasifikasi dengan Naive Bayes<a class="headerlink" href="#modeling-klasifikasi-dengan-naive-bayes" title="Link to this heading">#</a></h1>
+<section id="pemilihan-fitur">
+<h3>Pemilihan Fitur<a class="headerlink" href="#pemilihan-fitur" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">MultinomialNB</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">accuracy_score</span>
-
-<span class="c1"># 1. Split data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># === 4. Definisikan Fitur dan Target ===</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;first_encoded&#39;</span><span class="p">,</span> <span class="s1">&#39;last_encoded&#39;</span><span class="p">,</span> <span class="s1">&#39;last2_encoded&#39;</span><span class="p">,</span> <span class="s1">&#39;name_length&#39;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;gender_encoded&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="splitting-data">
+<h3>Splitting Data<a class="headerlink" href="#splitting-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># === 5. Split Data ===</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-
-<span class="c1"># 2. Buat dan latih model Naive Bayes</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">MultinomialNB</span><span class="p">()</span>
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-
-<span class="c1"># 3. Prediksi</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-
-<span class="c1"># 4. Evaluasi</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Akurasi ===&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Classification Report ===&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Perempuan&#39;</span><span class="p">,</span> <span class="s1">&#39;Laki-laki&#39;</span><span class="p">]))</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Confusion Matrix ===&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualisasi-data-setelah-normalisasi">
+<h3>Visualisasi Data setelah Normalisasi<a class="headerlink" href="#visualisasi-data-setelah-normalisasi" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Akurasi ===
-0.7303931554288042
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           Name Gender    Count   Probability first_letter last_letter  \
+0         James      M  5304407  1.451679e-02            j           s   
+1          John      M  5260831  1.439753e-02            j           n   
+2        Robert      M  4970386  1.360266e-02            r           t   
+3       Michael      M  4579950  1.253414e-02            m           l   
+4       William      M  4226608  1.156713e-02            w           m   
+...         ...    ...      ...           ...          ...         ...   
+147264   Zylenn      M        1  2.736740e-09            z           n   
+147265   Zymeon      M        1  2.736740e-09            z           n   
+147266   Zyndel      M        1  2.736740e-09            z           l   
+147267   Zyshan      M        1  2.736740e-09            z           n   
+147268    Zyton      M        1  2.736740e-09            z           n   
+
+       last2_letters  name_length  gender_encoded  first_encoded  \
+0                 es            5               1              9   
+1                 hn            4               1              9   
+2                 rt            6               1             17   
+3                 el            7               1             12   
+4                 am            7               1             22   
+...              ...          ...             ...            ...   
+147264            nn            6               1             25   
+147265            on            6               1             25   
+147266            el            6               1             25   
+147267            an            6               1             25   
+147268            on            5               1             25   
+
+        last_encoded  last2_encoded  
+0                 32            133  
+1                 27            180  
+2                 33            419  
+3                 25            126  
+4                 26             39  
+...              ...            ...  
+147264            27            336  
+147265            27            362  
+147266            25            126  
+147267            27             40  
+147268            27            362  
+
+[147269 rows x 12 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simpan ke file CSV</span>
+<span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;datasetgenderbynameprep.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="modelling">
+<h2>Modelling<a class="headerlink" href="#modelling" title="Link to this heading">#</a></h2>
+<p>Modeling merupakan proses pembuatan dan pengujian model statistik atau matematis yang digunakan untuk menggambarkan dan menganalisis pola atau hubungan dalam data. Tujuan utama dari pemodelan dalam data mining adalah untuk mengidentifikasi pola yang berguna atau prediksi yang akurat dari data yang tersedia.</p>
+<section id="modelling-klasifikasi-gender-berdasarkan-nama-bayi-menggunakan-decision-tree">
+<h3>Modelling Klasifikasi Gender Berdasarkan Nama Bayi menggunakan Decision Tree<a class="headerlink" href="#modelling-klasifikasi-gender-berdasarkan-nama-bayi-menggunakan-decision-tree" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Tujuan Pemodelan</p></li>
+</ol>
+<p>Pemodelan ini bertujuan untuk mengklasifikasikan jenis kelamin (gender) seorang bayi berdasarkan nama depannya. Nama bayi dapat mencerminkan kecenderungan gender tertentu, dan model klasifikasi bertujuan mempelajari pola tersebut dari data historis.</p>
+<p>Kategori kelas target dalam model ini terdiri dari dua kelas:</p>
+<ul class="simple">
+<li><p>Laki-laki (<code class="docutils literal notranslate"><span class="pre">Male</span></code>)</p></li>
+<li><p>Perempuan (<code class="docutils literal notranslate"><span class="pre">Female</span></code>)</p></li>
+</ul>
+<p>Model klasifikasi yang digunakan adalah Decision Tree Classifier, yaitu metode <em>supervised learning</em> berbasis pohon keputusan. Setiap cabang dalam pohon mewakili keputusan berdasarkan fitur dari nama, dan setiap daun menunjukkan hasil klasifikasi gender.</p>
+<ol class="arabic simple" start="2">
+<li><p>Pembagian Dataset: Data Latih dan Data Uji</p></li>
+</ol>
+<p>Langkah awal dalam pemodelan adalah membagi dataset menjadi dua bagian utama:</p>
+<ul class="simple">
+<li><p>Data Latih (Training Set): digunakan untuk melatih model agar mengenali pola dalam data.</p></li>
+<li><p>Data Uji (Testing Set): digunakan untuk menguji akurasi model terhadap data baru yang belum pernah dilihat sebelumnya.</p></li>
+</ul>
+<p>Dalam eksperimen ini digunakan pembagian data dengan rasio 80:20, artinya 80% data untuk pelatihan dan 20% untuk pengujian. Pemilihan rasio ini fleksibel, tergantung pada ukuran dan distribusi dataset.</p>
+<ol class="arabic simple" start="3">
+<li><p>Pra-Pemrosesan Data</p></li>
+</ol>
+<p>Sebelum digunakan dalam model, dilakukan beberapa langkah <em>preprocessing</em> terhadap data nama bayi:</p>
+<ul class="simple">
+<li><p>Label Encoding pada kolom <code class="docutils literal notranslate"><span class="pre">Gender</span></code> untuk mengubah nilai kategorikal (<code class="docutils literal notranslate"><span class="pre">'M'</span></code>, <code class="docutils literal notranslate"><span class="pre">'F'</span></code>) menjadi angka (<code class="docutils literal notranslate"><span class="pre">1</span></code> untuk laki-laki dan <code class="docutils literal notranslate"><span class="pre">0</span></code> untuk perempuan).</p></li>
+<li><p>Ekstraksi fitur dari kolom <code class="docutils literal notranslate"><span class="pre">Name</span></code>, antara lain:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">first_letter</span></code>: huruf pertama dari nama</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">last_letter</span></code>: huruf terakhir dari nama</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">last2_letters</span></code>: dua huruf terakhir</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name_length</span></code>: panjang jumlah huruf dari nama</p></li>
+</ul>
+</li>
+<li><p>Semua fitur kategorikal tersebut dikonversi menjadi format numerik menggunakan LabelEncoder dari <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>.</p></li>
+</ul>
+<p>Fitur-fitur tersebut cukup representatif untuk membantu model mengenali pola nama yang cenderung digunakan untuk laki-laki atau perempuan.</p>
+<ol class="arabic simple" start="4">
+<li><p>Pelatihan Model Decision Tree</p></li>
+</ol>
+<p>Model dilatih menggunakan algoritma Decision Tree Classifier dengan parameter:</p>
+<ul class="simple">
+<li><p>Kriteria: <code class="docutils literal notranslate"><span class="pre">gini</span></code> (untuk mengukur ketidakmurnian node)</p></li>
+<li><p>Kedalaman maksimum: <code class="docutils literal notranslate"><span class="pre">5</span></code> (untuk mencegah model terlalu kompleks atau <em>overfitting</em>)</p></li>
+</ul>
+<p>Pohon keputusan dibangun dengan membagi data berdasarkan fitur-fitur nama yang paling membantu dalam membedakan gender. Proses ini dilakukan secara rekursif sampai kedalaman tertentu.</p>
+<ol class="arabic simple" start="5">
+<li><p>Evaluasi Model</p></li>
+</ol>
+<p>Setelah pelatihan, model dievaluasi menggunakan metrik berikut:</p>
+<ul class="simple">
+<li><p>Akurasi: proporsi prediksi yang benar dibandingkan total data uji.</p></li>
+<li><p>Classification Report: menunjukkan metrik precision, recall, dan F1-score untuk masing-masing kelas gender (<code class="docutils literal notranslate"><span class="pre">Male</span></code> dan <code class="docutils literal notranslate"><span class="pre">Female</span></code>).</p></li>
+<li><p>Confusion Matrix: untuk melihat bagaimana prediksi model tersebar di antara kelas-kelas sebenarnya.</p></li>
+<li><p>Visualisasi Struktur Pohon: memperlihatkan bagaimana model membuat keputusan berdasarkan urutan fitur dan nilai yang diuji.</p></li>
+</ul>
+<ol class="arabic simple" start="6">
+<li><p>Prediksi dan Interpretasi</p></li>
+</ol>
+<p>Model yang sudah terlatih dapat digunakan untuk:</p>
+<ul class="simple">
+<li><p>Memprediksi gender dari nama bayi baru.</p></li>
+<li><p>Menganalisis fitur yang paling memengaruhi keputusan model (misalnya, huruf terakhir dari nama lebih sering membedakan gender secara signifikan).</p></li>
+</ul>
+<p>Kesimpulan</p>
+<p>Decision Tree merupakan metode klasifikasi yang cocok untuk kasus klasifikasi gender berdasarkan nama karena:</p>
+<ul class="simple">
+<li><p>Mampu menangani data kategorikal dan numerik tanpa normalisasi.</p></li>
+<li><p>Memberikan interpretasi visual yang mudah dipahami.</p></li>
+<li><p>Cepat dan efisien dalam pelatihan serta prediksi.</p></li>
+</ul>
+<p>Model ini dapat menjadi alat bantu klasifikasi berbasis nama, misalnya untuk keperluan statistik, analisis populasi, atau sistem rekomendasi yang mempertimbangkan gender.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># === 6. Training Decision Tree ===</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;gini&#39;</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># === 7. Evaluasi Model ===</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Akurasi:&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Classification Report ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">le_gender</span><span class="o">.</span><span class="n">classes_</span><span class="p">))</span>
+
+<span class="c1"># === 8. Visualisasi Pohon Keputusan ===</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">plot_tree</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span>
+          <span class="n">feature_names</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+          <span class="n">class_names</span><span class="o">=</span><span class="n">le_gender</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span>
+          <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+          <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Pohon Keputusan: Klasifikasi Gender Berdasarkan Nama&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi: 0.7616622530046853
 
 === Classification Report ===
               precision    recall  f1-score   support
 
-   Perempuan       0.74      0.85      0.79     18029
-   Laki-laki       0.70      0.54      0.61     11425
+           F       0.79      0.83      0.81     18029
+           M       0.71      0.66      0.68     11425
 
-    accuracy                           0.73     29454
-   macro avg       0.72      0.70      0.70     29454
-weighted avg       0.73      0.73      0.72     29454
-
-
-=== Confusion Matrix ===
-[[15339  2690]
- [ 5251  6174]]
+    accuracy                           0.76     29454
+   macro avg       0.75      0.74      0.75     29454
+weighted avg       0.76      0.76      0.76     29454
 </pre></div>
 </div>
+<img alt="_images/64499e4977504f693bfaac34eef4f8c9d2864950dbdde9bfcbd693386ddbdc95.png" src="_images/64499e4977504f693bfaac34eef4f8c9d2864950dbdde9bfcbd693386ddbdc95.png" />
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="percobaan-dengan-data-baru">
-<h1>percobaan dengan data baru<a class="headerlink" href="#percobaan-dengan-data-baru" title="Link to this heading">#</a></h1>
+<section id="modelling-klasifikasi-gender-berdasarkan-nama-menggunakan-naive-baye">
+<h3>Modelling Klasifikasi Gender Berdasarkan Nama Menggunakan Naive Baye<a class="headerlink" href="#modelling-klasifikasi-gender-berdasarkan-nama-menggunakan-naive-baye" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Tujuan Pemodelan**</p></li>
+</ol>
+<p>Pemodelan ini bertujuan untuk <strong>mengklasifikasikan jenis kelamin (gender)</strong> seorang bayi berdasarkan <strong>nama depannya</strong>. Berdasarkan data historis dari berbagai negara, terdapat pola statistik yang membedakan nama laki-laki dan perempuan.</p>
+<p>Model klasifikasi yang digunakan adalah <strong>Naive Bayes</strong>, sebuah metode probabilistik berbasis <strong>teorema Bayes</strong> dengan asumsi independensi antar fitur. Meskipun sederhana, model ini efektif untuk klasifikasi berbasis teks dan data kategorikal seperti nama.</p>
+<ol class="arabic simple" start="2">
+<li><p>Pembagian Dataset: Data Latih dan Data Uji**</p></li>
+</ol>
+<p>Dataset dibagi menjadi dua bagian:</p>
+<ul class="simple">
+<li><p><strong>Data Latih (Training Set)</strong>: digunakan untuk membangun model dan menghitung probabilitas.</p></li>
+<li><p><strong>Data Uji (Testing Set)</strong>: digunakan untuk menguji keakuratan model pada data yang belum pernah dilihat sebelumnya.</p></li>
+</ul>
+<p>Untuk eksperimen ini digunakan pembagian data dengan rasio <strong>80% data latih</strong> dan <strong>20% data uji</strong>, yang umum digunakan untuk memastikan keseimbangan antara pelatihan dan evaluasi.</p>
+<ol class="arabic simple" start="3">
+<li><p>Pra-Pemrosesan Data**</p></li>
+</ol>
+<p>Agar model Naive Bayes dapat bekerja dengan baik, dilakukan beberapa tahapan <em>preprocessing</em>:</p>
+<ul class="simple">
+<li><p><strong>Label Encoding</strong> pada kolom <code class="docutils literal notranslate"><span class="pre">Gender</span></code>, mengubah <code class="docutils literal notranslate"><span class="pre">'M'</span></code> dan <code class="docutils literal notranslate"><span class="pre">'F'</span></code> menjadi <code class="docutils literal notranslate"><span class="pre">1</span></code> dan <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
+<li><p><strong>Ekstraksi fitur dari nama</strong>, seperti:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">first_letter</span></code>: huruf pertama dari nama</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">last_letter</span></code>: huruf terakhir dari nama</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">last2_letters</span></code>: dua huruf terakhir dari nama</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name_length</span></code>: panjang nama dalam jumlah huruf</p></li>
+</ul>
+</li>
+<li><p>Fitur-fitur tekstual dikodekan menggunakan <strong>LabelEncoder</strong> menjadi angka kategorikal.</p></li>
+<li><p>Karena fitur bersifat diskrit dan kategorikal, model yang digunakan adalah <strong>Categorical Naive Bayes (<code class="docutils literal notranslate"><span class="pre">CategoricalNB</span></code>)</strong>, yang dirancang khusus untuk data diskrit.</p></li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p>Pelatihan Model Naive Bayes**</p></li>
+</ol>
+<p>Model dilatih menggunakan algoritma <strong>Categorical Naive Bayes</strong>, yang bekerja dengan menghitung probabilitas setiap kelas (<code class="docutils literal notranslate"><span class="pre">M</span></code> atau <code class="docutils literal notranslate"><span class="pre">F</span></code>) berdasarkan kombinasi fitur.</p>
+<p>Setiap fitur (huruf pertama, huruf terakhir, dsb.) diasumsikan independen satu sama lain, dan Naive Bayes menghitung probabilitas gabungan menggunakan aturan:</p>
+<div class="math notranslate nohighlight">
+\[
+P(\text{Gender} \mid \text{Fitur}) \propto P(\text{Gender}) \prod P(\text{Fitur}_i \mid \text{Gender})
+\]</div>
+<ol class="arabic simple" start="5">
+<li><p>Evaluasi Model**</p></li>
+</ol>
+<p>Model yang telah dilatih dievaluasi menggunakan beberapa metrik:</p>
+<ul class="simple">
+<li><p><strong>Akurasi</strong>: persentase prediksi yang benar dari total data uji.</p></li>
+<li><p><strong>Classification Report</strong>:</p>
+<ul>
+<li><p><strong>Precision</strong>: seberapa tepat prediksi model untuk tiap kelas</p></li>
+<li><p><strong>Recall</strong>: seberapa lengkap model mengenali tiap kelas</p></li>
+<li><p><strong>F1-Score</strong>: harmonic mean dari precision dan recall</p></li>
+</ul>
+</li>
+<li><p><strong>Confusion Matrix</strong>:</p>
+<ul>
+<li><p>Menampilkan jumlah prediksi benar dan salah untuk masing-masing kelas</p></li>
+<li><p>Dapat divisualisasikan dalam bentuk <strong>heatmap</strong></p></li>
+</ul>
+</li>
+</ul>
+<ol class="arabic simple" start="6">
+<li><p>Prediksi dan Interpretasi**</p></li>
+</ol>
+<p>Setelah evaluasi, model dapat digunakan untuk:</p>
+<ul class="simple">
+<li><p><strong>Memprediksi gender bayi</strong> berdasarkan nama baru.</p></li>
+<li><p><strong>Menilai pola nama</strong> yang cenderung digunakan oleh laki-laki atau perempuan.</p></li>
+<li><p>Menggunakan output probabilitas untuk mengukur keyakinan model terhadap prediksi (jika diperlukan).</p></li>
+</ul>
+<p>Kesimpulan**</p>
+<p>Naive Bayes adalah model klasifikasi yang:</p>
+<ul class="simple">
+<li><p><strong>Cepat, sederhana, dan efisien</strong> dalam menangani data kategorikal seperti nama bayi.</p></li>
+<li><p><strong>Cocok untuk dataset besar</strong> karena waktu pelatihan dan prediksi yang sangat cepat.</p></li>
+<li><p><strong>Memberikan hasil cukup baik</strong>, terutama jika fitur-fitur yang diekstrak memiliki kekuatan diskriminatif yang tinggi.</p></li>
+</ul>
+<p>Dalam kasus klasifikasi nama bayi, model ini bisa digunakan sebagai dasar pembuatan sistem otomatis klasifikasi gender, cocok untuk aplikasi seperti validasi data, survei demografis, hingga sistem rekomendasi berbasis gender.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nama_baru</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;rahel&#39;</span><span class="p">,</span> <span class="s1">&#39;alex&#39;</span><span class="p">,</span> <span class="s1">&#39;indah&#39;</span><span class="p">,</span> <span class="s1">&#39;david&#39;</span><span class="p">]</span>
-<span class="n">X_new</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">nama_baru</span><span class="p">)</span>
-<span class="n">prediksi</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_new</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">nama</span><span class="p">,</span> <span class="n">hasil</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">nama_baru</span><span class="p">,</span> <span class="n">prediksi</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nama</span><span class="si">}</span><span class="s2"> → </span><span class="si">{</span><span class="s1">&#39;Laki-laki&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">hasil</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;Perempuan&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rahel → Perempuan
-alex → Perempuan
-indah → Perempuan
-david → Laki-laki
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="evaluasi-model-tersebut">
-<h1>Evaluasi model tersebut<a class="headerlink" href="#evaluasi-model-tersebut" title="Link to this heading">#</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">CategoricalNB</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
-<span class="c1"># 1. Akurasi</span>
-<span class="n">acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy: </span><span class="si">{</span><span class="n">acc</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># === Training model Naive Bayes kategorikal ===</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">CategoricalNB</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
-<span class="c1"># 2. Classification report</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Classification Report:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Perempuan&quot;</span><span class="p">,</span> <span class="s2">&quot;Laki-laki&quot;</span><span class="p">]))</span>
+<span class="c1"># === Evaluasi ===</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Akurasi:&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Classification Report ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">le_gender</span><span class="o">.</span><span class="n">classes_</span><span class="p">))</span>
 
-<span class="c1"># 3. Confusion Matrix</span>
+<span class="c1"># === Confusion Matrix ===</span>
 <span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 
-<span class="c1"># Visualisasi confusion matrix</span>
+<span class="c1"># Tampilkan sebagai tabel dan visualisasi</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">,</span>
-            <span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Perempuan&quot;</span><span class="p">,</span> <span class="s2">&quot;Laki-laki&quot;</span><span class="p">],</span>
-            <span class="n">yticklabels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Perempuan&quot;</span><span class="p">,</span> <span class="s2">&quot;Laki-laki&quot;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Predicted Label&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;True Label&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Oranges&#39;</span><span class="p">,</span>
+            <span class="n">xticklabels</span><span class="o">=</span><span class="n">le_gender</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span>
+            <span class="n">yticklabels</span><span class="o">=</span><span class="n">le_gender</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix - Categorical Naive Bayes&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Predicted&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Actual&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.7304
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi: 0.7698445032932708
 
-Classification Report:
+=== Classification Report ===
               precision    recall  f1-score   support
 
-   Perempuan       0.74      0.85      0.79     18029
-   Laki-laki       0.70      0.54      0.61     11425
+           F       0.82      0.79      0.81     18029
+           M       0.69      0.73      0.71     11425
 
-    accuracy                           0.73     29454
-   macro avg       0.72      0.70      0.70     29454
-weighted avg       0.73      0.73      0.72     29454
+    accuracy                           0.77     29454
+   macro avg       0.76      0.76      0.76     29454
+weighted avg       0.77      0.77      0.77     29454
 </pre></div>
 </div>
-<img alt="_images/d30152539b35010ad1fa410444d7a9853cc771c3ecaf657621c030d0788643f0.png" src="_images/d30152539b35010ad1fa410444d7a9853cc771c3ecaf657621c030d0788643f0.png" />
+<img alt="_images/4dd9148992d3e690f1ed158f694ff36df690a6f022cc83098d258d86aa86e0e4.png" src="_images/4dd9148992d3e690f1ed158f694ff36df690a6f022cc83098d258d86aa86e0e4.png" />
 </div>
 </div>
+</section>
+<section id="modelling-klasifikasi-gender-berdasarkan-nama-menggunakan-knn">
+<h3>Modelling Klasifikasi Gender Berdasarkan Nama Menggunakan KNN<a class="headerlink" href="#modelling-klasifikasi-gender-berdasarkan-nama-menggunakan-knn" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Tujuan Pemodelan</p></li>
+</ol>
+<p>Tujuan dari pemodelan ini adalah untuk mengklasifikasikan jenis kelamin bayi (laki-laki atau perempuan) berdasarkan nama depannya. Data yang digunakan mencakup nama-nama bayi dari berbagai negara, dan nama tersebut diyakini mengandung pola yang mencerminkan gender.</p>
+<p>Model yang digunakan adalah K-Nearest Neighbors (KNN), yaitu algoritma <em>supervised learning</em> berbasis kedekatan. Dalam KNN, prediksi ditentukan berdasarkan mayoritas label dari sejumlah data pelatihan terdekat (tetangga terdekat) dalam ruang fitur.</p>
+<ol class="arabic simple" start="2">
+<li><p>Pembagian Dataset: Data Latih dan Data Uji</p></li>
+</ol>
+<p>Data dibagi menjadi dua bagian utama:</p>
+<ul class="simple">
+<li><p>Data Latih (Training Set): digunakan untuk menyimpan data referensi.</p></li>
+<li><p>Data Uji (Testing Set): digunakan untuk menguji performa prediksi pada data baru.</p></li>
+</ul>
+<p>Eksperimen ini menggunakan rasio pembagian 80:20, yaitu 80% data untuk pelatihan dan 20% untuk pengujian. Rasio ini dipilih untuk menjaga keseimbangan antara kapasitas belajar model dan evaluasi yang akurat.</p>
+<ol class="arabic simple" start="3">
+<li><p>Pra-Pemrosesan Data</p></li>
+</ol>
+<p>Sebelum digunakan dalam model KNN, data melalui beberapa tahapan <em>preprocessing</em> sebagai berikut:</p>
+<ul class="simple">
+<li><p>Label Encoding pada kolom <code class="docutils literal notranslate"><span class="pre">Gender</span></code>, mengubah <code class="docutils literal notranslate"><span class="pre">'M'</span></code> dan <code class="docutils literal notranslate"><span class="pre">'F'</span></code> menjadi angka (<code class="docutils literal notranslate"><span class="pre">1</span></code> dan <code class="docutils literal notranslate"><span class="pre">0</span></code>).</p></li>
+<li><p>Ekstraksi fitur dari nama, seperti:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">first_letter</span></code>: huruf pertama dari nama</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">last_letter</span></code>: huruf terakhir dari nama</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">last2_letters</span></code>: dua huruf terakhir</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name_length</span></code>: jumlah huruf dalam nama</p></li>
+</ul>
+</li>
+<li><p>Semua fitur berbentuk teks dikonversi menjadi angka menggunakan LabelEncoder dari <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>.</p></li>
+</ul>
+<p>Karena KNN bekerja berdasarkan jarak antar titik dalam ruang fitur, penting bahwa semua fitur bersifat numerik. Pada tahap ini, fitur-fitur tersebut telah memenuhi kriteria.</p>
+<ol class="arabic simple" start="4">
+<li><p>Pelatihan Model K-Nearest Neighbors</p></li>
+</ol>
+<p>Berbeda dengan algoritma lain, KNN tidak membentuk model eksplisit selama pelatihan. Sebaliknya, model hanya menyimpan data pelatihan.</p>
+<p>Untuk setiap instance baru yang ingin diprediksi, algoritma akan:</p>
+<ol class="arabic simple">
+<li><p>Menghitung jarak (biasanya Euclidean) terhadap semua data latih.</p></li>
+<li><p>Mengambil k data latih terdekat (misal, <code class="docutils literal notranslate"><span class="pre">k=5</span></code>).</p></li>
+<li><p>Melakukan voting untuk menentukan kelas terbanyak di antara tetangga terdekat tersebut.</p></li>
+</ol>
+<p>Pemilihan nilai k penting untuk keseimbangan antara generalisasi dan ketelitian. Dalam eksperimen ini digunakan k = 5.</p>
+<ol class="arabic simple" start="5">
+<li><p>Evaluasi Model</p></li>
+</ol>
+<p>Model KNN dievaluasi menggunakan data uji dengan metrik berikut:</p>
+<ul class="simple">
+<li><p>Akurasi: proporsi prediksi yang benar dari total prediksi.</p></li>
+<li><p>Classification Report:</p>
+<ul>
+<li><p>Precision: ketepatan prediksi untuk setiap kelas</p></li>
+<li><p>Recall: seberapa banyak kasus sebenarnya yang berhasil diprediksi</p></li>
+<li><p>F1-Score: rata-rata harmonis antara precision dan recall</p></li>
+</ul>
+</li>
+<li><p>Confusion Matrix: menunjukkan distribusi prediksi benar dan salah pada masing-masing kelas, dan divisualisasikan dalam bentuk heatmap.</p></li>
+</ul>
+<ol class="arabic simple" start="6">
+<li><p>Prediksi dan Interpretasi</p></li>
+</ol>
+<p>Setelah model KNN siap, dapat digunakan untuk:</p>
+<ul class="simple">
+<li><p>Memprediksi gender bayi dari nama yang baru berdasarkan pola nama yang mirip dalam dataset.</p></li>
+<li><p>Mengidentifikasi nama-nama yang memiliki kecenderungan kuat terhadap suatu gender, berdasarkan nama-nama tetangga terdekat.</p></li>
+</ul>
+<p>Kesimpulan</p>
+<p>K-Nearest Neighbors merupakan metode klasifikasi yang:</p>
+<ul class="simple">
+<li><p>Sederhana namun powerful, terutama untuk data numerik hasil transformasi dari kategori seperti nama.</p></li>
+<li><p>Tidak memerlukan pelatihan berat, karena prediksi dilakukan saat inferensi.</p></li>
+<li><p>Fleksibel, namun perlu penyesuaian parameter seperti jumlah tetangga (<code class="docutils literal notranslate"><span class="pre">k</span></code>) dan metode pengukuran jarak.</p></li>
+</ul>
+<p>Meskipun lebih lambat saat prediksi pada dataset besar, KNN tetap menjadi pilihan yang baik untuk eksplorasi awal dan dapat menjadi baseline untuk klasifikasi berbasis nama.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="c1"># === Training KNN ===</span>
+<span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># === Evaluasi ===</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Akurasi:&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Classification Report ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">le_gender</span><span class="o">.</span><span class="n">classes_</span><span class="p">))</span>
+
+<span class="c1"># === Confusion Matrix ===</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">,</span>
+            <span class="n">xticklabels</span><span class="o">=</span><span class="n">le_gender</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span>
+            <span class="n">yticklabels</span><span class="o">=</span><span class="n">le_gender</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix KNN Gender Classifier&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Predicted&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Actual&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi: 0.7499830243769946
+
+=== Classification Report ===
+              precision    recall  f1-score   support
+
+           F       0.80      0.80      0.80     18029
+           M       0.68      0.68      0.68     11425
+
+    accuracy                           0.75     29454
+   macro avg       0.74      0.74      0.74     29454
+weighted avg       0.75      0.75      0.75     29454
+</pre></div>
+</div>
+<img alt="_images/1fa4fe220e1454d3650b5e23f39192be34f8bcdec6087820c0e806d5c32b2178.png" src="_images/1fa4fe220e1454d3650b5e23f39192be34f8bcdec6087820c0e806d5c32b2178.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="evaluasi-data">
+<h2>Evaluasi Data<a class="headerlink" href="#evaluasi-data" title="Link to this heading">#</a></h2>
+<p>Dari dataset klasifikasi gender berdasarkan nama bayi diatas, akurasi yang didapatkan dari ketiga model klasifikasi antara lain:</p>
+<ul class="simple">
+<li><p>Decision Tree = 76,17%</p></li>
+<li><p>Categorical Naive Bayes = 76,98%</p></li>
+<li><p>K-Nearest Neighbor = 75%</p></li>
+</ul>
+<p>Dari ketiga model diatas dapat disimpulkan bahwa Categorical Naive Bayes memiliki akurasi tertinggi yaitu 76,98%.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1028,18 +1215,28 @@ weighted avg       0.73      0.73      0.72     29454
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Prediksi Gender Berdasarkan Nama</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data">Eksplorasi Data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#missin-values">missin values</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-outlier-atau-tidak">Data Outlier atau tidak</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi">Visualisasi</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sebelum-preprocessing">sebelum Preprocessing</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-klasifikasi-dengan-naive-bayes">Modeling: Klasifikasi dengan Naive Bayes</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#percobaan-dengan-data-baru">percobaan dengan data baru</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-model-tersebut">Evaluasi model tersebut</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">Data Understanding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sumber-dataset">Sumber dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-fitur-dan-variabel">Penjelasan Fitur dan Variabel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data">Eksplorasi data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">Visualisasi data</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-data">Preprocessing Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding">Encoding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pemilihan-fitur">Pemilihan Fitur</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#splitting-data">Splitting Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data-setelah-normalisasi">Visualisasi Data setelah Normalisasi</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling">Modelling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling-klasifikasi-gender-berdasarkan-nama-bayi-menggunakan-decision-tree">Modelling Klasifikasi Gender Berdasarkan Nama Bayi menggunakan Decision Tree</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling-klasifikasi-gender-berdasarkan-nama-menggunakan-naive-baye">Modelling Klasifikasi Gender Berdasarkan Nama Menggunakan Naive Baye</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling-klasifikasi-gender-berdasarkan-nama-menggunakan-knn">Modelling Klasifikasi Gender Berdasarkan Nama Menggunakan KNN</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-data">Evaluasi Data</a></li>
+</ul>
   </nav></div>
 
 </div></div>
